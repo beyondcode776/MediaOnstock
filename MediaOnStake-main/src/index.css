@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '@fontsource/syne/400.css';
+@import '@fontsource/syne/500.css';
+@import '@fontsource/syne/600.css';
+@import '@fontsource/syne/700.css';
+@import '@fontsource/syne/800.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+
+@layer base {
+  :root {
+    /* Dark Neon Theme */
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Electric Cyan Primary */
+    --primary: 180 100% 50%;
+    --primary-foreground: 240 10% 4%;
+
+    /* Deep Purple Secondary */
+    --secondary: 270 60% 50%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 10% 15%;
+    --muted-foreground: 240 5% 55%;
+
+    /* Neon Accent */
+    --accent: 300 100% 60%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 10% 15%;
+    --input: 240 10% 15%;
+    --ring: 180 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom Design Tokens */
+    --neon-cyan: 180 100% 50%;
+    --neon-purple: 270 100% 65%;
+    --neon-pink: 320 100% 60%;
+    --neon-blue: 220 100% 60%;
+    
+    --glass-bg: 240 10% 8%;
+    --glass-border: 240 10% 20%;
+    
+    /* Gradients */
+    --gradient-neon: linear-gradient(135deg, hsl(var(--neon-cyan)) 0%, hsl(var(--neon-purple)) 50%, hsl(var(--neon-pink)) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(240 10% 6%) 0%, hsl(240 10% 3%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(240 10% 12% / 0.5) 0%, hsl(240 10% 8% / 0.3) 100%);
+    --gradient-hero: radial-gradient(ellipse at 50% 0%, hsl(var(--neon-cyan) / 0.15) 0%, transparent 50%);
+    
+    /* Glow Effects */
+    --glow-cyan: 0 0 60px hsl(var(--neon-cyan) / 0.5);
+    --glow-purple: 0 0 60px hsl(var(--neon-purple) / 0.5);
+    --glow-soft: 0 0 40px hsl(var(--neon-cyan) / 0.2);
+
+    --sidebar-background: 240 10% 6%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 180 100% 50%;
+    --sidebar-primary-foreground: 240 10% 4%;
+    --sidebar-accent: 240 10% 12%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 10% 15%;
+    --sidebar-ring: 180 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply bg-glass-bg/50 backdrop-blur-xl border border-glass-border rounded-2xl;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-500;
+  }
+
+  .glass-card-hover:hover {
+    @apply border-primary/30;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      0 0 40px hsl(var(--neon-cyan) / 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* Neon Text */
+  .neon-text {
+    @apply text-primary;
+    text-shadow: 0 0 20px hsl(var(--neon-cyan) / 0.5);
+  }
+
+  .neon-text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-neon);
+  }
+
+  /* Neon Border */
+  .neon-border {
+    @apply border border-primary/50;
+    box-shadow: 
+      0 0 20px hsl(var(--neon-cyan) / 0.3),
+      inset 0 0 20px hsl(var(--neon-cyan) / 0.1);
+  }
+
+  /* Floating Button */
+  .btn-neon {
+    @apply relative overflow-hidden bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-xl transition-all duration-300;
+    box-shadow: 0 0 30px hsl(var(--neon-cyan) / 0.4);
+  }
+
+  .btn-neon:hover {
+    @apply scale-105;
+    box-shadow: 0 0 50px hsl(var(--neon-cyan) / 0.6);
+  }
+
+  .btn-ghost-neon {
+    @apply relative border border-primary/50 text-primary font-semibold px-8 py-4 rounded-xl transition-all duration-300 bg-transparent;
+  }
+
+  .btn-ghost-neon:hover {
+    @apply bg-primary/10 border-primary;
+    box-shadow: 0 0 30px hsl(var(--neon-cyan) / 0.2);
+  }
+
+  /* Section Styles */
+  .section-padding {
+    @apply py-24 md:py-32 px-4 md:px-8;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+
+  /* Grid Background */
+  .grid-bg {
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Animated underline */
+  .link-underline {
+    @apply relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Animation Delays */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+
+  /* Gradient text utility */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-neon);
+  }
+}

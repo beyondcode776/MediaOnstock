@@ -1,0 +1,22 @@
+/* In your global.css or tailwind config */
+.lottie-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .lottie-player {
+    pointer-events: none; /* Prevents interaction with the animation */
+  }
+  
+  .glass-card, .glass-card-hover {
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .glass-card-hover:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
